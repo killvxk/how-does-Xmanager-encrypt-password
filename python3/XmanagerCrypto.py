@@ -19,9 +19,16 @@ class XShellCrypto(object):
             self._Key = MD5.new(b'!X@s#h$e%l^l&').digest()
         elif 5.1 <= self._Version and self._Version <= 5.2:
             self._Key = SHA256.new(kwargs['SID'].encode()).digest()
-        elif 5.2 < self._Version:
+        elif 5.2 < self._Version and self._Version <= 7.0:
             if kwargs.get('MasterPassword') == None:
                 self._Key = SHA256.new((kwargs['UserName'] + kwargs['SID']).encode()).digest()
+            else:
+                self._Key = SHA256.new(kwargs['MasterPassword'].encode()).digest()
+        elif 7.0 < self._Version:
+            if kwargs.get('MasterPassword') == None:
+                strkey1  = kwargs['UserName'][::-1]+ kwargs['SID']
+                strkey2 = strkey1[::-1]
+                self._Key = SHA256.new((strkey2).encode()).digest()
             else:
                 self._Key = SHA256.new(kwargs['MasterPassword'].encode()).digest()
         else:
@@ -65,9 +72,16 @@ class XFtpCrypto(object):
             self._Key = MD5.new(b'!X@s#c$e%l^l&').digest()      # key is different with the one in XShellCrypto
         elif 5.1 <= self._Version and self._Version <= 5.2:
             self._Key = SHA256.new(kwargs['SID'].encode()).digest()
-        elif 5.2 < self._Version:
+        elif 5.2 < self._Version and self._Version <= 7.0:
             if kwargs.get('MasterPassword') == None:
                 self._Key = SHA256.new((kwargs['UserName'] + kwargs['SID']).encode()).digest()
+            else:
+                self._Key = SHA256.new(kwargs['MasterPassword'].encode()).digest()
+        elif 7.0 < self._Version:
+            if kwargs.get('MasterPassword') == None:
+                strkey1  = kwargs['UserName'][::-1]+ kwargs['SID']
+                strkey2 = strkey1[::-1]
+                self._Key = SHA256.new((strkey2).encode()).digest()
             else:
                 self._Key = SHA256.new(kwargs['MasterPassword'].encode()).digest()
         else:
