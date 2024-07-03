@@ -21,12 +21,15 @@ If you open Xshell or Xftp in Xmanager and then create a new session, you will f
 
 After you input your username and password then click "Ok", Xshell and Xftp will save your configuration at
 
-|Product |Session File Location                                          |
-|--------|:--------------------------------------------------------------|
-|XShell 5|`%userprofile%\Documents\NetSarang\Xshell\Sessions`            |
-|XFtp 5  |`%userprofile%\Documents\NetSarang\Xftp\Sessions`              |
-|XShell 6|`%userprofile%\Documents\NetSarang Computer\6\Xshell\Sessions` |
-|XFtp 6  |`%userprofile%\Documents\NetSarang Computer\6\Xftp\Sessions`   |
+| Product  | Session File Location                                          |
+|----------|:---------------------------------------------------------------|
+| XShell 5 | `%userprofile%\Documents\NetSarang\Xshell\Sessions`            |
+| XFtp 5   | `%userprofile%\Documents\NetSarang\Xftp\Sessions`              |
+| XShell 6 | `%userprofile%\Documents\NetSarang Computer\6\Xshell\Sessions` |
+| XFtp 6   | `%userprofile%\Documents\NetSarang Computer\6\Xftp\Sessions`   |
+| XShell 7 | `%userprofile%\Documents\NetSarang Computer\7\Xshell\Sessions` |
+| XFtp 7   | `%userprofile%\Documents\NetSarang Computer\7\Xftp\Sessions`   |
+
 
 The following is a sample session file created by Xftp 5:
 
@@ -138,4 +141,9 @@ Example:
 
    $ XShellCryptoHelper.py -d -key 123123 Rrm3P3AL0iDV7nBbS2bHvh7ZAvuN1NSJl8ZFL11+UJ+82+KAixa89O3OTAfRTg==
    This is a test
+   ```
+3. Xshell 7.1 or later Decrypt Password
+
+   ```cmd
+   python XShellCryptoHelper.py -d -ver 7.1 -user  Administrator -sid S-1-5-21-917267712-1342860078-1792151419-512 ngFGTzZj9nfB9/weciqcY9UPkQX74v9OUVX4aQQvWylfOxiB/FR1wUA=
    ```
